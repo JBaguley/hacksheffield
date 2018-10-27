@@ -43,7 +43,16 @@ function sendData(){
     };
     xhttp.open("POST", "http://127.0.0.1:5000/api/lookup", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send('{"test":"test"}');
+    sendString = "{"
+    for (i = 0;i<array.length;i++){
+
+        sendString += '\n"' + array[i][0] + '": "' + array[i][1] + '",'
+
+    }
+    sendString = sendString.substring(0,sendString.length - 1)
+    sendString += "}"
+    console.log(sendString)
+    xhttp.send(sendString);
 }
 
 
@@ -52,27 +61,8 @@ function myFunction(event) {
 
     
     var d = new Date();
-    var n = d.getTime();
-    
-    timeDiff = n - lastTime;
-    
-    lastTime = n
-    
-    
 
-    var x = event.which || event.keyCode|| event.code;
-    
-    lastKey = currKey;
-    
-    currKey = String.fromCharCode(x);    
-
-var myObj = {currKey, n};
-var myJSON = JSON.stringify(myObj);
- document.getElementById("demo").innerHTML = "The Unicode value is: " + x + "    " + n;
-    
-    document.getElementById("test").innerHTML = "The last key pressed was: " + lastKey + ". The current 			pressed key is: " + currKey + ". The time between the presses was " + timeDiff + " miliseconds!"
-
-
+    array.push([currKey, d.getTime()])
 
     document.getElementById("printarr").innerHTML = "The history of key presses is: " + array;
 }

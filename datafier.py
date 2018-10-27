@@ -37,12 +37,14 @@ def count(keyPresses):
 
 
 #---------- speed between specific keys -----------------
-def speedSpecKeys(keyPresses):
+def keySpeed(keyPresses):
     keys = {}
     t1 = 0
+    k1 = keyPresses[0]
 
     # find dictionary of keypress times
     for i in keyPresses:
+        k2 = i
         t2 = i[1]
         if t1 == 0:
             # if k1 in first key
@@ -60,7 +62,6 @@ def speedSpecKeys(keyPresses):
         # first key
         # save key
         else:
-            first = False
             k1 = k2
 
         # restart timer
@@ -101,7 +102,3 @@ def main(keyPresses):
 
 
 
-
-
-if __name__ == "__main__":
-    print(main())
