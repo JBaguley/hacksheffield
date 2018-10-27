@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Press a key on the keyboard in the input field to get the Unicode character code of the pressed key.</p>
+
+<input type="text" size="40" onkeypress="myFunction(event)">
+
+<p id="demo"></p>
+
+<p id="test"></p>
+
+<p id="printarr"></p>
+
+<script>
+/* In this example, we use a cross-browser solution, because the keyCode property does not work on the onkeypress event in Firefox. However, the which property does.
+
+Explanation of the first line in the function below: if the browser supports event.which, then use event.which, otherwise use event.keyCode */
+
+var array = [];
+
+
+
+
+var lastTime= 0;
+    
+var timeDiff = 0;
+
+var lastKey = "a";
+
+var currKey = "a";
+
+
+function myFunction(event) {
+
+
+    
+    var d = new Date();
+    var n = d.getTime();
+    
+    timeDiff = n - lastTime;
+    
+    lastTime = n
+    
+    
+
+    var x = event.which || event.keyCode|| event.code;
+    
+    lastKey = currKey;
+    
+    currKey = String.fromCharCode(x);    
+
+var myObj = {currKey, n};
+var myJSON = JSON.stringify(myObj);
+ document.getElementById("demo").innerHTML = "The Unicode value is: " + x + "    " + n;
+    
+    document.getElementById("test").innerHTML = "The last key pressed was: " + lastKey + ". The current 			pressed key is: " + currKey + ". The time between the presses was " + timeDiff + " miliseconds!"
+
+
+
+    document.getElementById("printarr").innerHTML = "The history of key presses is: " + array;
+}
+
+
+</script>
+
+</body>
+</html>
