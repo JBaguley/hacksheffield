@@ -1,6 +1,11 @@
-def hello_world():
-    print("Hello, World!")
+import string
+import random
+
+#data
+
+#for i in range (26):
 
 
-if __name__ == "__main__":
-    hello_world()
+
+
+# print(string.ascii_lowercase[7])
