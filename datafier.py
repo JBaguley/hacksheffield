@@ -1,10 +1,10 @@
 import pygame, time
 
-global back = ""
-global enter = ""
-global lshift = ""
-global rshift = ""
-global caps = ""
+back = ""
+enter = ""
+lshift = ""
+rshift = ""
+caps = ""
 
 
 
@@ -26,7 +26,7 @@ def count(keyPresses):
             count_LSHIFT += 1
         elif i[0] == rshift:
             count_RSHIFT += 1
-        elif i[0] == enter
+        elif i[0] == enter:
             t2 = i[1]
 
     return [count_CAPS, count_LSHIFT, count_RSHIFT, count_BACKSPACE, t2-t1]
@@ -104,4 +104,4 @@ def main(keyPresses):
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())
