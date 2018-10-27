@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>This example uses the HTML DOM to assign an "onkeydown" event to an input element.</p>
+
+<p>Press a key inside the text field to set a red background color.</p>
+
+<input type="text" id="demo">
+
+<p id="printarr"></p>
+
+<script>
+
+var array = [];
+
+
+
+
+//this function handels the event
+document.getElementById("demo").addEventListener('keydown', function(event) {
+    
+    
+    var key = event.key; // const {key} = event; 
+
+    
+    
+    //timing is handled here?
+    var d = new Date();
+    var time = d.getTime();
+   
+    array.push([key,time]);
+    
+    //prints out for debug
+    document.getElementById("printarr").innerHTML = "here is " + array;
+});
+
+
+
+
+</script>
+
+</body>
+</html>
