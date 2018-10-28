@@ -10,11 +10,35 @@
 
 <p id="printarr"></p>
 
+<button type="button" onclick="sendData()">Request data</button>
+
 <script>
 
 var array = [];
+var d = new Date();
 
+var start_time = d.getTime();
 
+function sendData(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "http://127.0.0.1:5000/api/lookup", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    sendString = '{\n   "data": ['
+    for (i = 0;i<array.length;i++){
+
+        sendString += '["' + array[i][0] + '",' + array[i][1] + '],'
+
+    }
+    sendString = sendString.substring(0,sendString.length - 1)
+    sendString += ']\n}'
+    console.log(sendString)
+    xhttp.send(sendString);
+}
 
 
 //this function handels the event
@@ -29,7 +53,7 @@ document.getElementById("demo").addEventListener('keydown', function(event) {
     var d = new Date();
     var time = d.getTime();
    
-    array.push([key,time]);
+    array.push([key,time-start_time]);
     
     //prints out for debug
     document.getElementById("printarr").innerHTML = "here is " + array;

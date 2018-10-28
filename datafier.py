@@ -1,10 +1,9 @@
 import pygame, time
 
-back = ""
-enter = ""
-lshift = ""
-rshift = ""
-caps = ""
+back = "Backspace"
+enter = "Enter"
+shift = "Shift"
+caps = "CapsLock"
 
 
 
@@ -12,8 +11,7 @@ caps = ""
 #-------------- count ----------------------
 def count(keyPresses):
     count_CAPS = 0
-    count_LSHIFT = 0
-    count_RSHIFT = 0
+    count_SHIFT = 0
     count_BACKSPACE = 0
     t1 = keyPresses[0][1]
 
@@ -22,14 +20,12 @@ def count(keyPresses):
             count_BACKSPACE += 1
         elif i[0] == caps:
             count_CAPS += 1
-        elif i[0] == lshift:
-            count_LSHIFT += 1
-        elif i[0] == rshift:
-            count_RSHIFT += 1
+        elif i[0] == shift:
+            count_SHIFT += 1
         elif i[0] == enter:
             t2 = i[1]
 
-    return [count_CAPS, count_LSHIFT, count_RSHIFT, count_BACKSPACE, t2-t1]
+    return [count_CAPS, count_SHIFT, count_BACKSPACE, t2-t1]
 
 
 
@@ -40,13 +36,13 @@ def count(keyPresses):
 def keySpeed(keyPresses):
     keys = {}
     t1 = 0
-    k1 = keyPresses[0]
+    k1 = keyPresses[0][0]
 
     # find dictionary of keypress times
     for i in keyPresses:
-        k2 = i
+        k2 = i[0]
         t2 = i[1]
-        if t1 == 0:
+        if t1 != 0:
             # if k1 in first key
             if k1 in keys:
                 # if k2 is in second key after k1
@@ -57,12 +53,11 @@ def keySpeed(keyPresses):
                     keys[k1][k2] = [t2-t1]
             # if k1 not in first key
             else:
-                keys[k1] = {k2 : [t2-t1]}
+                keys[k1] = {k2: [t2-t1]}
 
         # first key
         # save key
-        else:
-            k1 = k2
+        k1 = k2
 
         # restart timer
         t1 = t2
@@ -70,7 +65,7 @@ def keySpeed(keyPresses):
     # find averages
     total = 0
     totalNum = len(keys)-1
-
+    print(keys)
     for i in keys:
         for j in keys[i]:
             l = len(keys[i][j])
@@ -92,11 +87,12 @@ def main(keyPresses):
     Result = {}
     Result["avgKP"]   = keySpeed(keyPresses)[0]
     Result["specKP"]  = keySpeed(keyPresses)[1]
-    Result["totTime"] = count(keyPresses)[4]
-    Result["backs"]   = count(keyPresses)[3]
-    Result["rShifts"] = count(keyPresses)[2]
-    Result["lShifts"] = count(keyPresses)[1]
+    Result["totTime"] = count(keyPresses)[3]
+    Result["backs"]   = count(keyPresses)[2]
+    Result["shifts"]  = count(keyPresses)[1]
     Result["caps"]    = count(keyPresses)[0]
+
+    return Result
 
 
 
