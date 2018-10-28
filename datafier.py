@@ -24,8 +24,9 @@ def count(keyPresses):
             count_SHIFT += 1
         elif i[0] == enter:
             t2 = i[1]
+    SHIFT_percent = 100*(count_SHIFT*2)/(count_CAPS + count_SHIFT*2)
 
-    return [count_CAPS, count_SHIFT, count_BACKSPACE, t2-t1]
+    return [SHIFT_percent, count_BACKSPACE, t2-t1]
 
 
 
@@ -85,16 +86,10 @@ def keySpeed(keyPresses):
 
 def main(keyPresses):
     Result = {}
-    Result["avgKP"]   = keySpeed(keyPresses)[0]
-    Result["specKP"]  = keySpeed(keyPresses)[1]
-    Result["totTime"] = count(keyPresses)[3]
-    Result["backs"]   = count(keyPresses)[2]
-    Result["shifts"]  = count(keyPresses)[1]
-    Result["caps"]    = count(keyPresses)[0]
+    Result["avgKP"]         = keySpeed(keyPresses)[0]
+    Result["specKP"]        = keySpeed(keyPresses)[1]
+    Result["totTime"]       = count(keyPresses)[2]
+    Result["backs"]         = count(keyPresses)[1]
+    Result["shiftPercent"]  = count(keyPresses)[0]
 
     return Result
-
-
-
-
-
