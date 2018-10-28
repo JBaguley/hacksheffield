@@ -1,7 +1,12 @@
 #hahaha its stu pickles
 import pickle as stu
 
-THRESHOLD = 400
+THRESHOLD = 537
+A = 8
+B = 1
+C = 2
+D = 1
+E = 10
 
 
 
@@ -16,11 +21,11 @@ class data:
     def check(self, user):
         score = 0
 
-        score += abs(self.avgKP - user.avgKP)
-        score += abs(self.totTime - user.totTime)
-        score += abs(self.backs - user.backs)
-        score += abs(self.shifts - user.shifts)
-        score += abs(self.caps - user.caps)
+        score += A*abs(self.avgKP - user.avgKP)
+        score += B*abs(self.totTime - user.totTime)
+        score += C*abs(self.backs - user.backs)
+        score += D*abs(self.shifts - user.shifts)
+        score += E*abs(self.caps - user.caps)
 
         return score
 

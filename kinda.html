@@ -17,7 +17,7 @@
 var array = [];
 var d = new Date();
 
-var start_time = d.getTime();
+var start_time = -1;
 
 function sendData(){
     var xhttp = new XMLHttpRequest();
@@ -51,12 +51,20 @@ document.getElementById("demo").addEventListener('keydown', function(event) {
     
     //timing is handled here?
     var d = new Date();
+    
     var time = d.getTime();
-   
+    if (start_time == -1){
+        start_time = time
+    }
     array.push([key,time-start_time]);
     
     //prints out for debug
     document.getElementById("printarr").innerHTML = "here is " + array;
+
+    document.getElementById("printarr").innerHTML = "here is " + array;
+    if (key == "Enter"){
+        sendData()
+    }
 });
 
 
