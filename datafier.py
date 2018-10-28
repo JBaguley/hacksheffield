@@ -65,7 +65,7 @@ def keySpeed(keyPresses):
     # find averages
     total = 0
     totalNum = len(keys)-1
-    print(keys)
+    #print(keys)
     for i in keys:
         for j in keys[i]:
             l = len(keys[i][j])
