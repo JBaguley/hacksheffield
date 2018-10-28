@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<form action="/login" method="POST">
+  <input type="username" name="username" placeholder="Username"/>
+  <input id="password" type="password" name="password" placeholder="Password"/>
+  <input id="data" type="text" name = "data" hidden>
+  <input type="submit" value="Log in"/>
+</form>
+
+<p id="output"></p>
+{% endif %}
+{% endblock %}
+<script>
+array = [0]
+start_time = -1
+
+document.getElementById("password").addEventListener('keydown', function(event) {
+	var key = event.key; // const {key} = event;    //timing is handled here?
+	var d = new Date();    var time = d.getTime();
+   if (start_time == -1){
+
+       start_time = time
+
+   }
+
+   array.push(time-start_time);    //prints out for debug
+
+   document.getElementById("data").value = array.toString()
+
+
+
+
+});
+
+
+</script>
+
+
+</body>
+</html>

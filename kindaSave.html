@@ -2,11 +2,10 @@
 <html>
 <body>
 
-<p>This example uses the HTML DOM to assign an "onkeydown" event to an input element.</p>
+<p>A quotation is the repetition of one expression as part of another one, particularly when the quoted expression is well-known or explicitly attributed by citation to its original source.</p>
 
-<p>Press a key inside the text field to set a red background color.</p>
 
-<input type="text" id="name" value="colin" disabled>
+<input type="text" id="name" value="joe" disabled>
 <input type="text" id="demo">
 
 <p id="printarr"></p>
@@ -17,7 +16,7 @@
 var array = [];
 var d = new Date();
 
-var start_time = d.getTime();
+var start_time = -1;
 
 function sendData(){
     var xhttp = new XMLHttpRequest();
@@ -51,8 +50,11 @@ document.getElementById("demo").addEventListener('keydown', function(event) {
     
     //timing is handled here?
     var d = new Date();
+    
     var time = d.getTime();
-   
+    if (start_time == -1){
+        start_time = time
+    }
     array.push([key,time-start_time]);
     
     //prints out for debug

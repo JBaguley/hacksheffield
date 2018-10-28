@@ -1,0 +1,84 @@
+nav{
+    height: 80px;
+    background-color: #2E2E33;
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+#navlogo{
+    width: 150px;
+    margin: 16px 39px 16px 39px;
+    float: left;
+}
+
+nav div{
+    
+    height: 30px;
+    width: 50%;
+    display: inline-block;
+}
+
+nav h1{
+    font-size: 18px;
+    display: inline-block;
+    margin: 31px 0 0 15px;
+}
+
+#content{
+    width:100%;
+}
+
+#bubble{
+    width: 370px;
+    height: 470px;
+    margin: 150px auto 0 auto;
+    box-shadow: 10px 10px 30px -7px #555555;
+    border: 1px solid #555555;
+    border-radius: 10%;
+    text-align: center
+}
+
+#lock{
+    display: block;
+    float: none;
+    height: 100px;
+    margin: 50px auto 30px auto;
+}
+
+#bubble h1{
+    color: #2E2E33;
+    font-family: 'Raleway', sans-serif;
+    font-size: 26px;
+}
+
+#bubble h2{
+    color: #2E2E33;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+}
+
+#formblock{
+    width:100%;
+}
+
+#formblock input{
+    width:360px;
+    background-color: #DDDDDD;
+    border: 1px solid #2E2E33;
+    color: #2E2E33;
+    height: 50px;
+    margin: 0 0 3px 0;
+    padding: 0px 0px 0px 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+
+#formblock #register{
+    width: 100%;
+    background-color: #F8A8FF;
+}

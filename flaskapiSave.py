@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route("/api/lookup", methods=["POST"])
 def receiveData():
-    with open("data.txt", "a") as f:
+    with open("data2.txt", "a") as f:
         f.write(request.json["name"]+":"+str(datafier.main(request.json["data"]))+"\n")
 
     return jsonify(request.json)

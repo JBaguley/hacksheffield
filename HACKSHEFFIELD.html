@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="site2.css">
+    <title>Prgrphr</title>
+</head>
+<body>
+    <nav>
+        <img id="navlogo" src="prgrphr_white_small.png"/>
+        <div>
+            <h1>HOME</h1>
+            <h1>ABOUT US</h1>
+            <h1>HOW IT WORKS</h1>
+            <h1>CONTACT US</h1>
+        </div>
+        
+    </nav>
+    <main>
+        <div id="content">
+            <div id="bubble">
+                <img src="lock.png" id="lock">
+                <h1 id="demo">Unlock</h1>
+                <h2>Hello my name is Joe</h2>
+                <div id="formblock">
+                    <input type="text" placeholder=" ACCOUNT">
+                    <input type="text" placeholder=" TYPE THE ABOVE TEXT" id="input">
+                    <input type="button" value="CHECK" id="register">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+
+        var array = [];
+        var d = new Date();
+        
+        var start_time = -1;
+        
+        function sendData(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (this.responseText == "True"){
+                        document.getElementById("demo").innerHTML = "Welcome!";
+                    } else {
+                        document.getElementById("demo").innerHTML = "Try again!";
+                    }
+                
+                }
+            };
+            xhttp.open("POST", "http://127.0.0.1:5000/api/lookup", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            sendString = '{\n   "data": ['
+            for (i = 0;i<array.length;i++){
+        
+                sendString += '["' + array[i][0] + '",' + array[i][1] + '],'
+        
+            }
+            sendString = sendString.substring(0,sendString.length - 1)
+            sendString += ']\n}'
+            console.log(sendString)
+            xhttp.send(sendString);
+        }
+        
+        
+        //this function handels the event
+        document.getElementById("input").addEventListener('keydown', function(event) {
+            
+            
+            var key = event.key; // const {key} = event; 
+        
+            
+            
+            //timing is handled here?
+            var d = new Date();
+            
+            var time = d.getTime();
+            if (start_time == -1){
+                start_time = time
+            }
+            array.push([key,time-start_time]);
+            
+
+            if (key == "Enter"){
+                sendData()
+            }
+        });
+        
+        
+        
+        
+        </script>
+</body>
+</html>
